@@ -87,7 +87,7 @@ bool IsCyrillic(OUString word)
             
     }
     
-    return not flag_latin && flag_cyrillic;
+    return flag_latin && not flag_cyrillic;
 }
 
 bool IsLetter(char16_t letter){
@@ -185,6 +185,10 @@ void HighlightText(Reference< XFrame > &mxFrame)
         if (IsCyrillic(xTextCursor -> getString()))
         {
             xCursorProps -> setPropertyValue("CharColor", makeAny(0xC471ED));
+        }
+        else
+        {
+            xCursorProps -> setPropertyValue("CharColor", makeAny(0x000000));
         }
         
         if (xTextCursor -> goRight(1, true)) 
