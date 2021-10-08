@@ -124,7 +124,7 @@
                         <value>vnd.demo.complextoolbarcontrols.demoaddon:HighlightBtn</value>
                     </prop>
                     <prop oor:name="Title" oor:type="xs:string">
-                        <value xml:lang="en-US">Press to highlight words wrote by cyrillic alphabet </value>
+                        <value xml:lang="en-US">Press to highlight words wrote by latin alphabet </value>
                     </prop>
                     <prop oor:name="Target" oor:type="xs:string">
                         <value>_self</value>

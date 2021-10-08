@@ -25,6 +25,7 @@
 #include <uchar.h>
 #include <iostream>
 #include <map>
+#include <string>
 
 #include <com/sun/star/awt/MessageBoxButtons.hpp>
 #include <com/sun/star/awt/Toolkit.hpp>
@@ -466,10 +467,10 @@ void SAL_CALL BaseDispatch::dispatch( const URL& aURL, const Sequence < Property
         }
         else if ( aURL.Path == "GenWordsBtn" )
         {
-            if (words_length == "")
+            if (words_length.toInt32() <= 0)
                 ShowMessageBox(mxFrame, rtl::OUString("Error"), rtl::OUString("Please set all the parameters to generate words."));
             else
-                GenerateText(mxFrame, words_number, words_length.getLength(), language);
+                GenerateText(mxFrame, words_number, words_length.toInt32(), language);
         }
         else if ( aURL.Path == "TableStatsBtn" )
         {
@@ -607,7 +608,8 @@ void SAL_CALL BaseDispatch::controlEvent( const ControlEvent& Event )
                 }
 
                 if ( bHasText )
-                    words_length = aNewText;
+                    // words_length = aNewText;
+                    words_length = OUString::number(aNewText.toInt32());
             }
         }
     }
